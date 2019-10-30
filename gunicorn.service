@@ -1,0 +1,13 @@
+[Unit]
+Description =Gunicorn deamon
+After = network.target
+
+[Service]
+User=sub
+Group=nginx
+WorkingDirectory=/home/sub/Documents/django/
+ExecStart=/home/sub/virtualenv/firstdeploy/bin/gunicorn --workers 3 --bind unix:/home/sub/Documents/django/firstdeploy.sock firstdeploy.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+ 
